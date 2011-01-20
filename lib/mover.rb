@@ -101,10 +101,7 @@ module Mover
       # Execute
       transaction do
         exec_callbacks.call before
-        
-        
-        p "asdsada"
-        
+
         if options[:quick] or connection.class.to_s.include?('SQLite3')
           connection.execute(<<-SQL)
             INSERT INTO #{to[:table]} (#{insert.keys.join(', ')})
